@@ -1,0 +1,39 @@
+{% for group in zipped_lists %}
+  <!-- The first item is the weekday, access using group.0 -->
+  <h2>{{ group.0 }}</h2>
+    <div class="grid-container-header">
+        <div class="grid-header-item">Finsehytta</div>
+        <div class="grid-header-item">Kjeldebu</div>
+        <div class="grid-header-item">Kraekkja</div>
+    </div>
+  <div class="grid-container">
+    <!-- Iterate over the rest of the items in each group -->
+    {% for value in group|slice:"1:" %}
+      <div class="grid-item">
+        {{ value }}
+      </div>
+    {% endfor %}
+  </div>
+{% endfor %}
+
+<style>
+.grid-container-header, .grid-container {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px; /* Space below the header */
+}
+
+.grid-header-item, .grid-item {
+  flex: 1 0 21%; /* Adjust as needed */
+  margin: 5px;
+  padding: 5px;
+  box-sizing: border-box;
+  background-color: #f8f8f8;
+  text-align: center; /* Center the text */
+}
+
+.grid-header-item {
+  background-color: #dcdcdc; /* A lighter background for the header */
+  font-weight: bold; /* Make the header text bold */
+}
+</style>
